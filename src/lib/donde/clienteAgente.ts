@@ -27,8 +27,8 @@ export interface ResultadoPregunta {
   aviso: string | null;
 }
 
-/** Preguntas con IA por visitante y día durante la beta. Igual que `LIMITE_IP_POR_DEFECTO` (servidor/presupuesto.ts). Solo se usa hasta que el servidor dice su límite real (`limite` en el 200 y en el 429). */
-export const PREGUNTAS_IA_BETA = 3;
+/** Preguntas con IA por visitante y día (100 desde el 26-nov; en Vercel, `AGENTE_LIMITE_IP_DIA`). El de reserva del servidor (`LIMITE_IP_POR_DEFECTO`, sin variable) sigue en 3. Solo se usa hasta que el servidor dice su límite real (`limite` en el 200 y en el 429). */
+export const PREGUNTAS_IA_BETA = 100;
 
 /** «te quedan 2 preguntas» / «te queda 1 pregunta». */
 export function textoRestantes(n: number): string {
@@ -53,7 +53,7 @@ export function avisoDeMotivo(m: MotivoRespaldo, limite: number = PREGUNTAS_IA_B
     case "tiempo":
       return "El agente de IA ha tardado demasiado; respondo con reglas.";
     case "limite":
-      return `El agente está en beta: cada conexión puede hacer ${limite} ${limite === 1 ? "pregunta" : "preguntas"} con IA al día y ya se han usado las de hoy. Sigo respondiendo con reglas, con los mismos datos.`;
+      return `Cada conexión puede hacer ${limite} ${limite === 1 ? "pregunta" : "preguntas"} con IA al día y ya se han usado las de hoy. Sigo respondiendo con reglas, con los mismos datos.`;
     case "peticion":
     case "no_disponible":
       return "El agente de IA no está disponible ahora; respondo con reglas.";

@@ -10,7 +10,7 @@
 import { createHash } from "node:crypto";
 
 export const TOPE_POR_DEFECTO_USD = 3;
-/** Beta: 3 preguntas con IA por visitante y día (decidido por Guillermo el 20-nov). La web lo anuncia con `PREGUNTAS_IA_BETA`. */
+/** Reserva si falta `AGENTE_LIMITE_IP_DIA`: 3 preguntas con IA por visitante y día. En producción la variable vale 100 (26-nov). */
 export const LIMITE_IP_POR_DEFECTO = 3;
 /**
  * Dólares que se reservan al empezar CADA llamada al proveedor y se cambian por el coste real al recibir la respuesta. Cubre una llamada

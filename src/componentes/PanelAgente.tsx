@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { MAX_CARACTERES_PREGUNTA, PREGUNTAS_SUGERIDAS } from "../lib/donde/intencion";
-import { PREGUNTAS_IA_BETA, textoRestantes } from "../lib/donde/clienteAgente";
+import { textoRestantes } from "../lib/donde/clienteAgente";
 import { ETIQUETA_MODO_REGLAS } from "../lib/donde/plantillas";
 import { ETIQUETA_PASO, type Agente, type MensajeUI } from "../lib/useAgente";
 import { IconoCerrar } from "./Iconos";
@@ -110,7 +110,7 @@ export function PanelAgente({ agente, abierto, onAbrir, onCerrar }: Props) {
       <header className="agente__cabecera">
         <div>
           <h2 id={idTitulo} className="agente__titulo">
-            Pregúntale al agente <span className="agente__beta">Beta</span>
+            Pregúntale al agente
           </h2>
           <p className="agente__sub">
             {agente.modo === "ia" ? (
@@ -120,7 +120,7 @@ export function PanelAgente({ agente, abierto, onAbrir, onCerrar }: Props) {
             ) : agente.modo === "reglas" ? (
               "Responde sin IA, con reglas"
             ) : (
-              `Versión beta: ${PREGUNTAS_IA_BETA} preguntas con IA al día por visitante. Después responde con reglas, con los mismos datos que el mapa.`
+              "Responde con IA. Si la IA no está disponible, responde con reglas, con los mismos datos que el mapa."
             )}
           </p>
         </div>

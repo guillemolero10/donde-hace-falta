@@ -5273,7 +5273,7 @@ function interpretar(texto, o) {
 		return null;
 	};
 	const sinServicio = () => noEntendida("Me falta saber de qué servicio hablas (residencia, centro de salud, farmacia, hospital, colegio o desfibrilador).");
-	if (lugares.length >= 2 && tokens.some((tk) => tk.startsWith("compar"))) return noEntendida("En el modo sin IA no sé comparar dos lugares a la vez: pídeme la ficha de cada uno por separado (por ejemplo «¿Qué servicios tiene Getafe?»).", servicio);
+	if (lugares.length >= 2 && tokens.some((tk) => tk.startsWith("compar"))) return noEntendida("No sé comparar dos lugares a la vez: pídeme la ficha de cada uno por separado (por ejemplo «¿Qué servicios tiene Getafe?»).", servicio);
 	const cuantasPlazas = /\bcuantas plazas\b/.test(c);
 	if ((f.ficha && !(hs && primero?.tipo === "zona") || pidioMiLugar && !f.poner && !f.rank && !f.donde || cuantasPlazas && esPuntual(primero) && !f.poner) && !(f.donde && f.poner)) {
 		if (pidioMiLugar && !lugarContexto && !primero) return noEntendida("Todavía no sé cuál es tu municipio: abre «Mi municipio» y elige uno, o dime su nombre.", servicio);
@@ -5379,7 +5379,7 @@ function respuesta(texto, acciones = [], pasos = []) {
 function textoNoEntendida(i) {
 	const lista = i.sugerencias.map((s) => `«${s}»`);
 	const y = lista.length > 1 ? `${lista.slice(0, -1).join(", ")} o ${lista[lista.length - 1]}` : lista[0] ?? "";
-	return `${i.mensaje} En el modo sin IA solo sé responder a preguntas sobre un servicio y un lugar, y no invento cifras. Prueba con: ${y}.`;
+	return `${i.mensaje} Solo sé responder a preguntas sobre un servicio y un lugar, y no invento cifras. Prueba con: ${y}.`;
 }
 /**
 * Pregunta -> respuesta, sin red ni claves: interpreta, llama a las herramientas y redacta con plantillas. Nunca lanza.
@@ -6102,10 +6102,10 @@ function vistaParaModelo(r) {
 }
 // servidor/agente.ts
 /**
-* El servidor corta a los 26 s (R5): la web espera 28 s y la función tiene `maxDuration` de 30 s. El reloj empieza después del
-* arranque en frío y de leer el cuerpo, así que quedan ~2 s de margen frente a la web y ~4 s frente a Vercel.
+* El servidor corta a los 40 s (26-nov; antes 26 s, R5): la web espera 45 s y la función tiene `maxDuration` de 60 s. El reloj empieza después del
+* arranque en frío y de leer el cuerpo, así que quedan ~5 s de margen frente a la web y ~20 s frente a Vercel.
 */
-var TIEMPO_TURNO_MS = 26e3;
+var TIEMPO_TURNO_MS = 4e4;
 var MAX_CUERPO_CARACTERES = 2e4;
 var NO_DISPONIBLE = (motivo) => ({
 	status: 503,
@@ -6460,8 +6460,7 @@ async function manejarAgente(entrada, deps) {
 				...await responderSinIA(peticion, entorno),
 				modo: "reglas",
 				restantes: cupo.restantes,
-				limite,
-				...descartado ? { motivo: "revisada" } : {}
+				limite
 			};
 		}
 		registrar({

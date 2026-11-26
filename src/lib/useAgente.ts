@@ -191,8 +191,10 @@ export function useAgente({ donde, vista, destino, lugar = null, alias }: Opcion
         ranking,
       };
       setMensajes((m) => [...m, asistente]);
-      setModo(respuesta.modo);
-      if (respuesta.modo === "ia") setRestantes(respuesta.restantes);
+      // Respuesta «revisada»: la IA interpretó la pregunta y el servidor dio el texto calculado; cuenta como IA en la cabecera.
+      const conIA = respuesta.modo === "ia" || respuesta.motivo === "revisada";
+      setModo(conIA ? "ia" : "reglas");
+      if (conIA) setRestantes(respuesta.restantes);
       else setRestantes(null);
 
       // El texto ya se ve; ahora se aplica en el mapa y en el panel.

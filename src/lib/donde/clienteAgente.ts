@@ -14,7 +14,7 @@ export type MotivoRespaldo =
   | "presupuesto"
   | "proveedor"
   | "no_disponible" // 503 sin motivo conocido
-  | "tiempo" // 504 o más de 28 s
+  | "tiempo" // 504 o más de 45 s
   | "limite" // 429
   | "peticion"; // 400
 
@@ -63,11 +63,11 @@ export function avisoDeMotivo(m: MotivoRespaldo, limite: number = PREGUNTAS_IA_B
 /** Frase cuando el servidor ha descartado el texto del modelo por seguridad y da la respuesta calculada (`motivo: "revisada"`). */
 export const AVISO_RESPUESTA_REVISADA = "El agente propuso una cifra o un enlace que no sale del cálculo; te doy la respuesta calculada con los datos.";
 
-/** Tiempo máximo de espera: el servidor corta a los 26 s (504; `TIEMPO_TURNO_MS` en `servidor/agente.ts`). */
-export const TIEMPO_MAXIMO_MS = 28_000;
+/** Tiempo máximo de espera: el servidor corta a los 40 s (504; `TIEMPO_TURNO_MS` en `servidor/agente.ts`). */
+export const TIEMPO_MAXIMO_MS = 45_000;
 /** Tras un fallo no se vuelve a pedir al servidor durante un rato (no se espera dos veces un tiempo agotado ni se pide algo que no existe). */
 export const ESPERA_SIN_API_MS = 10 * 60_000;
-export const ESPERA_TRAS_FALLO_MS = 60_000;
+export const ESPERA_TRAS_FALLO_MS = 0; // 26-nov: tras un fallo pasajero, la pregunta siguiente vuelve a probar la IA
 
 const TIPOS_ACCION = new Set<Accion["tipo"]>(["elegir_servicio", "mover_mapa", "marcar_puntos", "mostrar_ranking", "abrir_ficha"]);
 

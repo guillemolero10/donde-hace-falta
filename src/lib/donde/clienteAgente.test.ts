@@ -102,14 +102,12 @@ describe("cliente del agente", () => {
     expect((await c.preguntar(peticion)).via).toBe("local");
   });
 
-  it("tras un fallo no espera otra vez al servidor hasta pasado un rato", async () => {
-    let t = 1_000;
-    const f = vi.fn(async () => json(503, { motivo: "apagado" }));
+  it("tras un fallo pasajero, la pregunta siguiente vuelve a probar la IA (26-nov: ESPERA_TRAS_FALLO_MS = 0)", async () => {
+    expect(ESPERA_TRAS_FALLO_MS).toBe(0);
+    const t = 1_000;
+    const f = vi.fn(async () => json(503, { motivo: "proveedor" }));
     const { c } = cliente(f as unknown as typeof fetch, { ahora: () => t });
-    await c.preguntar(peticion);
-    await c.preguntar(peticion);
-    expect(f).toHaveBeenCalledTimes(1);
-    t += ESPERA_TRAS_FALLO_MS + 1;
+    expect((await c.preguntar(peticion)).via).toBe("local");
     f.mockImplementation(async () => json(200, RESPUESTA_IA));
     const r = await c.preguntar(peticion);
     expect(f).toHaveBeenCalledTimes(2);

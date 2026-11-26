@@ -29,10 +29,10 @@ import { vistaParaModelo } from "./vista-modelo";
 export { PROMPT_VERSION };
 
 /**
- * El servidor corta a los 26 s (R5): la web espera 28 s y la función tiene `maxDuration` de 30 s. El reloj empieza después del
- * arranque en frío y de leer el cuerpo, así que quedan ~2 s de margen frente a la web y ~4 s frente a Vercel.
+ * El servidor corta a los 40 s (26-nov; antes 26 s, R5): la web espera 45 s y la función tiene `maxDuration` de 60 s. El reloj empieza después del
+ * arranque en frío y de leer el cuerpo, así que quedan ~5 s de margen frente a la web y ~20 s frente a Vercel.
  */
-export const TIEMPO_TURNO_MS = 26_000;
+export const TIEMPO_TURNO_MS = 40_000; // 26-nov: 40 s (web 45 s, maxDuration 60 s) para que Meta lento no dispare el respaldo
 export const MAX_VUELTAS = 5;
 export const MAX_LLAMADAS_POR_VUELTA = 3;
 export const MAX_LLAMADAS_TOTALES = 6;
@@ -361,7 +361,7 @@ export async function manejarAgente(entrada: EntradaHttp, deps: Dependencias): P
       } else {
         // Sin resultados que redactar: el intérprete por reglas responde a la pregunta entera, con el mismo motor.
         const r = await responderSinIA(peticion, entorno);
-        respuesta = { ...r, modo: "reglas", restantes: cupo.restantes, limite, ...(descartado ? { motivo: "revisada" as const } : {}) };
+        respuesta = { ...r, modo: "reglas", restantes: cupo.restantes, limite }; // sin «revisada»: el texto es 100 % de reglas (R9)
       }
     }
     registrar({

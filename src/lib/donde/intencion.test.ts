@@ -126,7 +126,7 @@ describe("preguntas que no se entienden", () => {
     ["¿Y si la pongo por ahí?", /(¿En qué municipio|No encuentro|Me falta saber)/],
     ["¿Qué municipios están peor?", /Me falta saber de qué servicio/],
     ["farmacias", /no sé qué quieres saber/],
-    ["compara Getafe y Leganés en farmacias", /no sé comparar/],
+    ["compara Getafe y Leganés en farmacias", /no sé comparar/i],
     ["pon farmacias en Pozuelo", /¿Quizá Pozuelo de Alarcón/],
     // T2-M10: de dinero no se sabe nada, y no se responde con otra herramienta.
     ["cuanto cuesta construir un hospital", /No sé calcular costes/],

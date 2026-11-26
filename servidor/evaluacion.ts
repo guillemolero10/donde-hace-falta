@@ -345,7 +345,7 @@ export function informeMarkdown(rs: Resultado[], meta: { prompt: string; modelo:
   l.push(`- Prompt: \`${meta.prompt}\` · modelo: \`${meta.modelo}\``);
   l.push(`- **Nota: ${s.aciertos}/${s.n}** (objetivo: 10 o más de 12)`);
   l.push(`- Coste: ${usd(s.costeTotal)} en total, ${usd(s.costeMedio)} por pregunta · tokens: ${s.tokensEntrada} de entrada y ${s.tokensSalida} de salida`);
-  l.push(`- Tiempo: ${seg(s.msMedio)} de media, ${seg(s.msMax)} el máximo (límite del turno ${TIEMPO_TURNO_MS / 1000} s; de la función 30 s)`);
+  l.push(`- Tiempo: ${seg(s.msMedio)} de media, ${seg(s.msMax)} el máximo (límite del turno ${TIEMPO_TURNO_MS / 1000} s; de la función 60 s)`);
   if (meta.nota) l.push(`- ${meta.nota}`);
   l.push("");
   l.push("| # | Nota | Modo | Tiempo | Coste | Llamadas | Razonam. | Herramientas | Pregunta |");

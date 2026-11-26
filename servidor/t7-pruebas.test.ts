@@ -142,25 +142,25 @@ describe(`T7: latencia (TIEMPO_TURNO_MS = ${TIEMPO_TURNO_MS / 1000} s)`, () => {
     return { status: r.status, modo: (r.cuerpo as { modo?: string }).modo, validacion: lineas[0]?.validacion, gasto, cupoDevuelto: otra.status !== 429 };
   }
 
-  it("una llamada: 24 s responde con IA; pasado el límite da 504, apunta la llamada cortada en el tope y NO devuelve el cupo (R5-I1)", async () => {
-    const a = await turnoSimple(24_000);
+  it("una llamada: 38 s responde con IA; pasado el límite da 504, apunta la llamada cortada en el tope y NO devuelve el cupo (R5-I1)", async () => {
+    const a = await turnoSimple(38_000);
     expect(a).toMatchObject({ status: 200, modo: "ia" });
-    for (const d of [TIEMPO_TURNO_MS + 1_000, 28_000, 31_000]) {
+    for (const d of [TIEMPO_TURNO_MS + 1_000, 42_000, 45_000]) {
       const r = await turnoSimple(d);
       expect(r, `${d} ms`).toMatchObject({ status: 504, gasto: COSTE_LLAMADA_CORTADA_USD, cupoDevuelto: false });
     }
   });
 
-  it("con herramienta: 1.ª llamada de 10 s + 2.ª de 10 s = IA; 2.ª de 17 s (total 27 s) = plantilla sin IA con 200", async () => {
-    expect(await turnoConHerramienta(10_000, 10_000)).toMatchObject({ status: 200 });
-    const lenta = await turnoConHerramienta(10_000, 17_000);
+  it("con herramienta: 1.ª llamada de 10 s + 2.ª de 25 s = IA; 2.ª de 31 s (total 41 s) = plantilla sin IA con 200", async () => {
+    expect(await turnoConHerramienta(10_000, 25_000)).toMatchObject({ status: 200, modo: "ia" });
+    const lenta = await turnoConHerramienta(10_000, 31_000);
     expect(lenta).toMatchObject({ status: 200, modo: "reglas", validacion: "tiempo" });
     expect(lenta.gasto).toBeGreaterThan(0); // la 1.ª sí se cobró
   });
 
-  it("con herramienta: si la 1.ª llamada ya tarda 24 s el turno acaba sin texto del modelo (plantilla); pasado el límite, 504", async () => {
-    const r24 = await turnoConHerramienta(24_000, 5_000);
-    expect(r24).toMatchObject({ status: 200, modo: "reglas", validacion: "tiempo" });
+  it("con herramienta: si la 1.ª llamada ya tarda 38 s el turno acaba sin texto del modelo (plantilla); pasado el límite, 504", async () => {
+    const r38 = await turnoConHerramienta(38_000, 5_000);
+    expect(r38).toMatchObject({ status: 200, modo: "reglas", validacion: "tiempo" });
     const tarde = await turnoConHerramienta(TIEMPO_TURNO_MS + 1_000, 1_000);
     expect(tarde).toMatchObject({ status: 504, gasto: COSTE_LLAMADA_CORTADA_USD, cupoDevuelto: false });
   });

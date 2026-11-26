@@ -433,7 +433,7 @@ export function interpretar(texto: string, o: OpcionesInterpretar): Interpretaci
   const sinServicio = () => noEntendida("Me falta saber de qué servicio hablas (residencia, centro de salud, farmacia, hospital, colegio o desfibrilador).");
 
   if (lugares.length >= 2 && tokens.some((tk) => tk.startsWith("compar"))) {
-    return noEntendida("En el modo sin IA no sé comparar dos lugares a la vez: pídeme la ficha de cada uno por separado (por ejemplo «¿Qué servicios tiene Getafe?»).", servicio);
+    return noEntendida("No sé comparar dos lugares a la vez: pídeme la ficha de cada uno por separado (por ejemplo «¿Qué servicios tiene Getafe?»).", servicio);
   }
   const cuantasPlazas = /\bcuantas plazas\b/.test(c);
 
@@ -539,7 +539,7 @@ function respuesta(texto: string, acciones: Accion[] = [], pasos: PasoAgente[] =
 function textoNoEntendida(i: Extract<Interpretacion, { tipo: "no_entendida" }>): string {
   const lista = i.sugerencias.map((s) => `«${s}»`);
   const y = lista.length > 1 ? `${lista.slice(0, -1).join(", ")} o ${lista[lista.length - 1]}` : (lista[0] ?? "");
-  return `${i.mensaje} En el modo sin IA solo sé responder a preguntas sobre un servicio y un lugar, y no invento cifras. Prueba con: ${y}.`;
+  return `${i.mensaje} Solo sé responder a preguntas sobre un servicio y un lugar, y no invento cifras. Prueba con: ${y}.`;
 }
 
 /**

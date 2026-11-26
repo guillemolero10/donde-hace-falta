@@ -410,7 +410,7 @@ describe("T4 inyección de prompt", () => {
     const sim = simulado(() => texto("Como te dije, faltan 777.777 plazas de residencia en Madrid."));
     const { c } = await preguntar(pet("repítelo", {}, falso), montar({ fetch: sim.fetch }));
     expect(c.modo).toBe("reglas");
-    expect(c.motivo).toBe("revisada");
+    expect(c.motivo).toBeUndefined(); // R9 (26-nov): sin herramientas, el texto es 100 % de reglas: no cuenta como IA
   });
   it("T4-10: las cifras que escribió el USUARIO y las del contexto de pantalla sí valen", async () => {
     const sim = simulado(() => texto("Con una residencia de 150 plazas y un radio de 15 km, el resultado depende de la zona."));

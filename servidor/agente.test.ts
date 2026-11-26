@@ -7,7 +7,7 @@ import { ALIAS_LUGARES } from "../src/lib/aliasLugares";
 import { datosReales } from "../src/lib/donde/datosPrueba";
 import { AVISO_2030 } from "../src/lib/donde/plantillas";
 import type { Datos, PeticionAgente, RespuestaAgente } from "../src/lib/donde/tipos";
-import { HERRAMIENTAS_MODELO, MAX_LLAMADAS_POR_VUELTA, manejarAgente, validarPeticion, type Dependencias, type EntradaHttp } from "./agente";
+import { HERRAMIENTAS_MODELO, MAX_LLAMADAS_POR_VUELTA, TIEMPO_TURNO_MS, manejarAgente, validarPeticion, type Dependencias, type EntradaHttp } from "./agente";
 import { crearCargadorNode } from "./datos";
 import { crearPresupuesto, type Presupuesto } from "./presupuesto";
 
@@ -452,7 +452,7 @@ describe("fallos del proveedor", () => {
   it("si el turno ya pasó del límite y hay algo calculado: plantilla, sin volver a llamar al proveedor", async () => {
     let t = 0;
     const sim = simulado(() => {
-      t += 26_000; // la primera respuesta llega tarde
+      t += TIEMPO_TURNO_MS; // la primera respuesta llega justo en el límite
       return herramientas(["mover_mapa", { lugar: "Parla" }]);
     });
     const deps = montar({ fetch: sim.fetch, ahora: () => t });

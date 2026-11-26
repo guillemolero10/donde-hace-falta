@@ -1,7 +1,6 @@
 import { useEffect, useId, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { MAX_CARACTERES_PREGUNTA, PREGUNTAS_SUGERIDAS } from "../lib/donde/intencion";
 import { textoRestantes } from "../lib/donde/clienteAgente";
-import { ETIQUETA_MODO_REGLAS } from "../lib/donde/plantillas";
 import { ETIQUETA_PASO, type Agente, type MensajeUI } from "../lib/useAgente";
 import { IconoCerrar } from "./Iconos";
 import "./PanelAgente.css";
@@ -43,15 +42,12 @@ function Mensaje({ m }: { m: MensajeUI }) {
     <li className="agente__msg agente__msg--agente">
       <span className="agente__quien">
         Agente
-        <span className={`agente__modo agente__modo--${m.modo === "ia" ? "ia" : "reglas"}`}>{m.modo === "ia" ? "IA" : m.revisada ? "Modo sin IA (respuesta revisada)" : "Modo sin IA"}</span>
+        {/* 26-nov: «IA» si la IA interpretó la pregunta (también si el validador cambió el texto por el calculado). En el respaldo
+            sin IA no se pone etiqueta ni aviso: no se dice «IA» cuando no lo es, pero tampoco se avisa (decisión de Guillermo). */}
+        {m.modo === "ia" || m.revisada ? <span className="agente__modo agente__modo--ia">IA</span> : null}
       </span>
       <p>{m.texto}</p>
       <Pasos m={m} />
-      {m.modo !== "ia" && (
-        <p className="agente__nota">
-          {ETIQUETA_MODO_REGLAS}.{m.aviso ? ` ${m.aviso}` : ""}
-        </p>
-      )}
       {m.noAplicadas ? <p className="agente__nota agente__nota--aviso">No he podido aplicar {m.noAplicadas === 1 ? "un cambio" : `${m.noAplicadas} cambios`} en el mapa.</p> : null}
     </li>
   );
@@ -118,9 +114,9 @@ export function PanelAgente({ agente, abierto, onAbrir, onCerrar }: Props) {
                 Responde con IA{agente.restantes !== null ? ` · ${textoRestantes(agente.restantes)}` : ""}
               </>
             ) : agente.modo === "reglas" ? (
-              "Responde sin IA, con reglas"
+              "Responde con los mismos datos que el mapa"
             ) : (
-              "Responde con IA. Si la IA no está disponible, responde con reglas, con los mismos datos que el mapa."
+              "Responde con IA, con los mismos datos que el mapa."
             )}
           </p>
         </div>

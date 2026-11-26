@@ -50,14 +50,24 @@ h2 { font-family: var(--titulo); font-weight: 600; font-size: 64px; line-height:
 
 /* ---------- 1. Portada ---------- */
 .portada { background: var(--tinta); color: var(--superficie); padding: 0; display: flex; }
-.portada .texto { width: 1000px; padding: 112px 72px 96px 128px; display: flex; flex-direction: column; }
+.portada .texto { width: 1000px; padding: 104px 72px 76px 128px; display: flex; flex-direction: column; }
 .portada .etiqueta { color: #b9bdc3; }
-.portada h1 { font-family: var(--titulo); font-weight: 600; font-size: 128px; line-height: 1.06; letter-spacing: -0.02em; margin-top: 56px; }
+.portada h1 { font-family: var(--titulo); font-weight: 600; font-size: 128px; line-height: 1.06; letter-spacing: -0.02em; margin-top: 40px; }
 .portada .lema { font-family: var(--titulo); font-style: italic; font-size: 44px; line-height: 1.2; margin-top: 32px; color: #e9e4d8; }
 .portada .descripcion { font-size: 28px; line-height: 1.5; margin-top: 48px; color: #d4d7db; max-width: 780px; }
-.portada .autor { margin-top: auto; font-size: 28px; line-height: 1.4; }
+.portada .usos { list-style: none; margin-top: 30px; font-size: 28px; line-height: 1.45; color: #d4d7db; max-width: 800px; }
+.portada .usos li + li { margin-top: 10px; }
+.portada .usos b { color: var(--superficie); font-weight: 700; }
+.portada .base { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
+.portada .autor { font-size: 28px; line-height: 1.4; }
 .portada .autor b { font-weight: 700; font-size: 32px; }
 .portada .autor span { color: #b9bdc3; }
+.portada .acceso { display: flex; align-items: center; gap: 26px; font-size: 24px; white-space: nowrap; line-height: 1.4; color: #d4d7db; }
+.portada .acceso img { width: 136px; height: 136px; border-radius: 8px; }
+.portada .acceso b { color: var(--superficie); font-size: 24px; }
+.portada .acceso a { color: #9cc3e8; font-weight: 600; }
+.qr3 { position: absolute; top: 80px; right: 128px; text-align: center; font-size: 18px; font-weight: 600; color: var(--tinta-2); }
+.qr3 img { display: block; width: 124px; height: 124px; margin-bottom: 6px; border-radius: 6px; border: 1px solid var(--borde); }
 /* Solo la parte del mapa de la captura (x 520-1366 de 1366 × 850), entera y enmarcada: escala 0,9456 */
 .portada .marco { align-self: center; width: 812px; height: 804px; overflow: hidden; border-radius: 14px; box-shadow: 0 24px 60px -20px rgba(0,0,0,.6); }
 .portada .marco img { display: block; width: 1292px; height: 804px; margin-left: -480px; }
@@ -104,11 +114,20 @@ h2 { font-family: var(--titulo); font-weight: 600; font-size: 64px; line-height:
 <!-- 1. Título, integrante y descripción -->
 <section class="portada">
   <div class="texto">
-    <p class="etiqueta">DATAMAD 2026 · Comunidad de Madrid</p>
+    <p class="etiqueta">DATAMAD 2026 · Equipo 31 · Guillermo Molero</p>
     <h1>¿Dónde hace falta?</h1>
     <p class="lema">Qué cerca están los servicios públicos y dónde un centro nuevo ayudaría más.</p>
-    <p class="descripcion">Cruzamos los registros oficiales de centros de la Comunidad con la población por edad de sus 4.518 secciones censales. Un simulador para decidir dónde invertir, una ficha para cada municipio y un agente que responde con cifras calculadas, no inventadas.</p>
-    <p class="autor"><b>Guillermo Molero</b><br><span>Participante individual</span></p>
+    <ul class="usos">
+      <li><b>Para la Administración:</b> decidir dónde invertir, con la población de hoy y la de 2030.</li>
+      <li><b>Para el vecino:</b> qué servicios tiene cerca su municipio y cómo está el aire hoy.</li>
+      <li><b>Y un agente de IA</b> que calcula, no inventa.</li>
+    </ul>
+    <div class="base">
+      <div class="acceso">
+        <img src="qr-web.svg" alt="Código QR a donde-hace-falta.vercel.app">
+        <div><b>Pruébalo:</b> <a href="https://donde-hace-falta.vercel.app">donde-hace-falta.vercel.app</a><br><b>▶ Vídeo (2 min):</b> <a href="https://donde-hace-falta.vercel.app/demo.mp4">donde-hace-falta.vercel.app/demo.mp4</a><br><span>Guillermo Molero · participante individual</span></div>
+      </div>
+    </div>
   </div>
   <div class="marco"><img src="../docs/capturas/donde-hace-falta-simulador.png" alt="Mapa de la Comunidad de Madrid coloreado por plazas de residencia por cada 100 mayores"></div>
 </section>
@@ -145,6 +164,7 @@ h2 { font-family: var(--titulo); font-weight: 600; font-size: 64px; line-height:
 <section>
   <p class="etiqueta">Resultados</p>
   <h2 style="margin-top:20px">Dónde ayudaría más un centro nuevo</h2>
+  <div class="qr3"><img src="qr-web.svg" alt="Código QR a donde-hace-falta.vercel.app">Pruébalo</div>
   <div class="cifras">
     <div class="cifra azul">
       <div class="num">91 %</div>
@@ -161,8 +181,8 @@ h2 { font-family: var(--titulo); font-weight: 600; font-size: 64px; line-height:
   </div>
   <div class="claves">
     <div>
-      <h3>Utilidad</h3>
-      <p>Quien decide prueba ubicaciones antes de invertir y las compara con la del modelo. El vecino ve qué servicios tiene su municipio y cómo está el aire hoy.</p>
+      <h3>Un servicio para los dos</h3>
+      <p>La Administración prueba ubicaciones antes de invertir y las compara con la del modelo. El vecino ve qué servicios tiene su municipio y cómo está el aire hoy.</p>
     </div>
     <div>
       <h3>Impacto</h3>
@@ -177,7 +197,7 @@ h2 { font-family: var(--titulo); font-weight: 600; font-size: 64px; line-height:
     <span><b>Demo:</b> <a href="https://donde-hace-falta.vercel.app">donde-hace-falta.vercel.app</a></span>
     <span><b>Código:</b> <a href="https://github.com/guillemolero10/donde-hace-falta">github.com/guillemolero10/donde-hace-falta</a></span>
     <span>Código MIT · datos CC BY 4.0 · reproducible</span>
-    <span><b>Vídeo de la demo (2 min):</b> <a href="https://github.com/guillemolero10/donde-hace-falta/blob/main/presentacion/demo-donde-hace-falta.mp4">presentacion/demo-donde-hace-falta.mp4</a> (en el repositorio)</span>
+    <span><b>▶ Vídeo de la demo (2 min):</b> <a href="https://donde-hace-falta.vercel.app/demo.mp4">donde-hace-falta.vercel.app/demo.mp4</a></span>
   </div>
   <div class="pie"><span>Distancias en línea recta · Referencia: media de España (IMSERSO), 4,05 plazas por cada 100 mayores a menos de 10 km</span><span>3</span></div>
 </section>

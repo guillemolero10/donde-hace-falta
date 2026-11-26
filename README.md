@@ -6,7 +6,7 @@ Cruza los registros oficiales de centros de la Comunidad de Madrid con la poblac
 
 ![Simulador: residencia de mayores en Pinto](docs/capturas/donde-hace-falta-simulador.png)
 
-**Vídeo de la demo (2 min, sin voz, con rótulos):** [presentacion/demo-donde-hace-falta.mp4](presentacion/demo-donde-hace-falta.mp4). Grabado sobre la web publicada, con preguntas reales al agente de IA; la espera de sus respuestas va acelerada.
+**▶ Vídeo de la demo (2 min, sin voz, con rótulos):** [donde-hace-falta.vercel.app/demo.mp4](https://donde-hace-falta.vercel.app/demo.mp4) (se ve en el navegador; copia en [presentacion/demo-donde-hace-falta.mp4](presentacion/demo-donde-hace-falta.mp4)). Grabado sobre la web publicada, con preguntas reales al agente de IA; la espera de sus respuestas va acelerada.
 
 ## Qué hace
 

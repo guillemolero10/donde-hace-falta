@@ -1,6 +1,8 @@
 # ¿Dónde hace falta?
 
-**Qué cobertura tienen los servicios públicos de la Comunidad de Madrid y dónde un centro nuevo ayudaría más.** Proyecto para el datathon DATAMAD 2026.
+**Qué cobertura tienen los servicios públicos de la Comunidad de Madrid y dónde un centro nuevo ayudaría más.** Proyecto para el datathon DATAMAD 2026 (equipo 31, Guillermo Molero Jiménez).
+
+**Pruébalo:** [donde-hace-falta.vercel.app](https://donde-hace-falta.vercel.app) · **Presentación:** [presentacion/donde-hace-falta-DATAMAD2026.pdf](presentacion/donde-hace-falta-DATAMAD2026.pdf)
 
 Cruza los registros oficiales de centros de la Comunidad de Madrid con la población por edad de cada una de sus 4.518 secciones censales (INE, censo de 2025) para medir qué vecinos tienen cerca un centro de salud, un hospital, una farmacia, un colegio o instituto o un desfibrilador, y qué zonas tienen pocas plazas de residencia para mayores.
 

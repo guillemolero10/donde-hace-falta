@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Equipo 31 · ¿Dónde hace falta? · demo</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #fbf8f0; color: #1d1d1b; }
+  main { max-width: 980px; margin: 0 auto; padding: 28px 24px 40px; }
+  h1 { font-family: Georgia, "Times New Roman", serif; font-size: 34px; margin: 0 0 4px; }
+  p.sub { margin: 0 0 22px; color: #555; }
+  h2 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #666; margin: 22px 0 8px; }
+  .fila { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  a.b { display: block; padding: 16px 18px; border-radius: 10px; background: #fff; border: 2px solid #1d1d1b; color: #1d1d1b; text-decoration: none; font-size: 20px; font-weight: 650; line-height: 1.25; }
+  a.b small { display: block; font-size: 14px; font-weight: 400; color: #555; margin-top: 4px; }
+  a.b:hover, a.b:focus-visible { background: #1d1d1b; color: #fff; outline: none; }
+  a.b:hover small, a.b:focus-visible small { color: #ddd; }
+  a.b kbd { float: right; font: 600 14px ui-monospace, monospace; border: 1px solid currentColor; border-radius: 4px; padding: 1px 6px; opacity: .7; }
+  .b.plan { border-style: dashed; }
+  #aviso { display: none; margin: 0 0 16px; padding: 14px 16px; border-radius: 10px; background: #fff1e6; border: 2px solid #c0561b; font-size: 17px; }
+  footer { margin-top: 26px; font-size: 13px; color: #777; }
+</style>
+</head>
+<body>
+<main>
+  <h1>¿Dónde hace falta? · Equipo 31</h1>
+  <p class="sub">Guía de la demo: cada botón abre una escena en una pestaña nueva. Para volver aquí, cierra la pestaña (Ctrl+W o ⌘W).</p>
+
+  <div id="aviso" role="alert"><strong>Este navegador no puede dibujar el mapa (sin WebGL).</strong> Usa el plan B: el vídeo de 2 minutos (tecla 7).</div>
+
+  <h2>Presentación</h2>
+  <div class="fila">
+    <a class="b" id="k1" target="_blank" href="/presentacion.pdf"><kbd>1</kbd>Presentación (PDF)<small>Portada al empezar; diapositiva 3 y QR al terminar</small></a>
+  </div>
+
+  <h2>Golpe 1 · Estamos en Vicálvaro</h2>
+  <div class="fila">
+    <a class="b" id="k2" target="_blank" href="/?vista=municipio&amp;lugar=dis:2807919"><kbd>2</kbd>Ficha de Vicálvaro<small>El aire de hoy y los servicios que tiene</small></a>
+  </div>
+
+  <h2>Golpe 2 · Ustedes contra el modelo: residencia de 94 plazas</h2>
+  <div class="fila">
+    <a class="b" id="k3" target="_blank" href="/?servicio=residencia&amp;radio=10000&amp;sim=40.43066,-3.54246&amp;plazas=94"><kbd>3</kbd>Coslada<small>Después: «¿Y dónde lo pondría el modelo?»</small></a>
+    <a class="b" id="k4" target="_blank" href="/?servicio=residencia&amp;radio=10000&amp;sim=40.44954,-3.47764&amp;plazas=94"><kbd>4</kbd>Torrejón de Ardoz<small>Después: «¿Y dónde lo pondría el modelo?»</small></a>
+    <a class="b" id="k5" target="_blank" href="/?servicio=residencia&amp;radio=10000&amp;sim=40.47933,-3.37795&amp;plazas=94"><kbd>5</kbd>Alcalá de Henares<small>Después: «¿Y dónde lo pondría el modelo?»</small></a>
+  </div>
+
+  <h2>Golpe 3 · El agente, en directo</h2>
+  <div class="fila">
+    <a class="b" id="k6" target="_blank" href="/?agente=1"><kbd>6</kbd>Abrir el agente<small>1) ¿Dónde pondrías 3 residencias?<br>2) ¿Qué le falta a Vicálvaro?</small></a>
+  </div>
+
+  <h2>Plan B</h2>
+  <div class="fila">
+    <a class="b plan" id="k7" target="_blank" href="/demo.mp4"><kbd>7</kbd>Vídeo de la demo (2 min)<small>Si falla el mapa o la red</small></a>
+    <a class="b plan" id="k8" target="_blank" href="/"><kbd>8</kbd>La web, desde el principio<small>donde-hace-falta.vercel.app</small></a>
+  </div>
+
+  <footer>Datos abiertos de la Comunidad de Madrid (CC BY 4.0) e INE. Código: github.com/guillemolero10/donde-hace-falta</footer>
+</main>
+<script>
+  (function () {
+    try {
+      var c = document.createElement("canvas");
+      if (!(c.getContext("webgl2") || c.getContext("webgl"))) document.getElementById("aviso").style.display = "block";
+    } catch (e) { document.getElementById("aviso").style.display = "block"; }
+    document.addEventListener("keydown", function (e) {
+      if (e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+      var a = document.getElementById("k" + e.key);
+      if (a) { e.preventDefault(); a.click(); }
+    });
+  })();
+</script>
+</body>
+</html>

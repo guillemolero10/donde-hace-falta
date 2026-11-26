@@ -6,6 +6,8 @@ Cruza los registros oficiales de centros de la Comunidad de Madrid con la poblac
 
 ![Simulador: residencia de mayores en Pinto](docs/capturas/donde-hace-falta-simulador.png)
 
+**Vídeo de la demo (2 min, sin voz, con rótulos):** [presentacion/demo-donde-hace-falta.mp4](presentacion/demo-donde-hace-falta.mp4). Grabado sobre la web publicada, con preguntas reales al agente de IA; la espera de sus respuestas va acelerada.
+
 ## Qué hace
 
 **1. ¿Dónde hace falta?** (vista de quien decide)
@@ -13,7 +15,7 @@ Cruza los registros oficiales de centros de la Comunidad de Madrid con la poblac
 - **Tú decides:** colocas un centro nuevo en el mapa (arrastrándolo, con el dedo o con el teclado) y ves al momento cuántos vecinos ganan acceso o, en residencias, cuántas plazas más se cubren.
 - **El modelo:** calcula la mejor ubicación (algoritmo voraz de máxima cobertura) y compara tu propuesta con ella («logra el 68 % del óptimo»).
 - **Madrid en 2030:** repite el cálculo con la población proyectada para 2030 (proyección oficial INE/Comunidad repartida por sección y validada con los años 2021-2025).
-- **Agente:** preguntas en lenguaje natural («¿dónde pondrías una residencia en el sur?»). El agente usa las mismas herramientas de cálculo, mueve el mapa y explica el resultado; cada cifra del texto sale de esas herramientas. Con IA (Muse Spark, de Meta, a través de su API) entiende preguntas libres; **sin clave, sin conexión o con el tope de gasto agotado responde en «Modo sin IA»** (interpreta la pregunta por reglas en el navegador, con las mismas herramientas). Cómo activarlo: [docs/I2-agente.md](docs/I2-agente.md).
+- **Agente:** preguntas en lenguaje natural («¿dónde pondrías una residencia en el sur?»). El agente usa las mismas herramientas de cálculo, mueve el mapa y explica el resultado; cada cifra del texto sale de esas herramientas. Con IA (Muse Spark, de Meta, a través de su API) entiende preguntas libres; **sin clave, sin conexión o con el tope de gasto agotado responde por reglas** (interpreta la pregunta en el navegador, con las mismas herramientas). Cómo activarlo: [docs/I2-agente.md](docs/I2-agente.md).
 
 **2. Mi municipio** (vista del ciudadano)
 - Buscas tu municipio o distrito y ves qué servicios tiene, cómo está frente a la media de la Comunidad, dónde un centro nuevo le ayudaría más y cómo está el aire hoy (red de estaciones de la Comunidad, actualizada varias veces al día).

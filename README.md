@@ -88,7 +88,7 @@ El desarrollo se ha hecho con ayuda de asistentes de IA (permitido por las bases
 
 **En la aplicación**, el agente de «¿Dónde hace falta?» usa [Muse Spark](https://dev.meta.ai) (`muse-spark-1.3`) a través de la API de Meta, compatible con OpenAI; con `AGENTE_PROVEEDOR=baseten` usa Muse Spark Open (pesos abiertos) en Baseten. El modelo solo puede llamar a 5 herramientas de cálculo del propio proyecto; cada cifra del texto se valida contra sus resultados y, si no coincide, se responde con una plantilla. Sin clave, el agente funciona en modo sin IA (reglas). Código en `servidor/` (función `api/agente.js`, generada con `npm run build:api`).
 
-**Código reutilizado (propio):** `servidor/proveedor.ts` (cliente del modelo: clave solo por variable de entorno, `reasoning_effort` bajo, reintentos, coste por llamada) y `servidor/presupuesto.ts` (tope de gasto diario) están adaptados del proyecto DockClerk de Guillermo Molero (`apps/meta-hackathon/dockclerk/src/lib/ai/`), escrito para el Meta Hackathon.
+**Código reutilizado (propio):** `servidor/proveedor.ts` (cliente del modelo: clave solo por variable de entorno, `reasoning_effort` bajo, reintentos, coste por llamada) y `servidor/presupuesto.ts` (tope de gasto diario) están adaptados del proyecto DockClerk de Guillermo Molero Jiménez (`apps/meta-hackathon/dockclerk/src/lib/ai/`), escrito para el Meta Hackathon.
 
 ## Licencias
 - Código: MIT ([LICENSE](LICENSE)).

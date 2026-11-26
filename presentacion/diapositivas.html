@@ -107,25 +107,41 @@ h2 { font-family: var(--titulo); font-weight: 600; font-size: 64px; line-height:
 .captura .leyenda b { font-weight: 700; }
 .captura .naranja { color: var(--naranja); font-weight: 700; }
 .captura .azul { color: var(--azul); font-weight: 700; }
+
+/* ---------- Versión con menos texto (26-nov) ---------- */
+.portada .lema { font-size: 48px; }
+.portada .usos { font-size: 34px; margin-top: 44px; }
+.portada .usos li + li { margin-top: 14px; }
+.problema p.grande { font-family: var(--titulo); font-weight: 600; font-size: 48px; line-height: 1.2; }
+.problema p.grande + p.grande { margin-top: 36px; }
+.problema p.grande.naranja { color: var(--naranja); font-style: italic; }
+.datos li { padding: 13px 0; }
+.datos li .nombre { font-size: 28px; }
+.datos .catalogo { font-size: 22px; margin-top: 18px; color: var(--tinta-2); }
+.datos .catalogo a { color: var(--acento); font-weight: 600; }
+.cifra p { font-size: 30px; }
+.claves h3 { font-size: 38px; }
+.claves p { font-size: 28px; }
+.captura .leyenda { font-size: 30px; text-align: center; }
 </style>
 </head>
 <body>
 
-<!-- 1. Título, integrante y descripción -->
+<!-- 1. Título e integrante -->
 <section class="portada">
   <div class="texto">
-    <p class="etiqueta">DATAMAD 2026 · Equipo 31 · Guillermo Molero</p>
+    <p class="etiqueta">DATAMAD 2026 · Equipo 31 · Guillermo Molero Jiménez</p>
     <h1>¿Dónde hace falta?</h1>
-    <p class="lema">Qué cerca están los servicios públicos y dónde un centro nuevo ayudaría más.</p>
+    <p class="lema">Dónde un centro nuevo ayudaría más.</p>
     <ul class="usos">
-      <li><b>Para la Administración:</b> decidir dónde invertir, con la población de hoy y la de 2030.</li>
-      <li><b>Para el vecino:</b> qué servicios tiene cerca su municipio y cómo está el aire hoy.</li>
-      <li><b>Y un agente de IA</b> que calcula, no inventa.</li>
+      <li><b>Administración:</b> decide dónde invertir.</li>
+      <li><b>Vecino:</b> ve qué tiene cerca.</li>
+      <li><b>IA:</b> calcula, no inventa.</li>
     </ul>
     <div class="base">
       <div class="acceso">
         <img src="qr-web.svg" alt="Código QR a donde-hace-falta.vercel.app">
-        <div><b>Pruébalo:</b> <a href="https://donde-hace-falta.vercel.app">donde-hace-falta.vercel.app</a><br><b>▶ Vídeo (2 min):</b> <a href="https://donde-hace-falta.vercel.app/demo.mp4">donde-hace-falta.vercel.app/demo.mp4</a><br><span>Guillermo Molero · participante individual</span></div>
+        <div><b>Pruébalo:</b> <a href="https://donde-hace-falta.vercel.app">donde-hace-falta.vercel.app</a><br><b>▶ Vídeo (2 min):</b> <a href="https://donde-hace-falta.vercel.app/demo.mp4">donde-hace-falta.vercel.app/demo.mp4</a><br><span>Guillermo Molero Jiménez · participante individual</span></div>
       </div>
     </div>
   </div>
@@ -135,69 +151,68 @@ h2 { font-family: var(--titulo); font-weight: 600; font-size: 64px; line-height:
 <!-- 2. Problema y conjuntos de datos con enlaces -->
 <section>
   <p class="etiqueta">El problema y los datos</p>
-  <h2 style="margin-top:20px">Cruzar dónde está cada servicio con quién vive cerca</h2>
+  <h2 style="margin-top:20px">Los datos existen, pero separados</h2>
   <div class="dos-columnas">
     <div class="problema">
-      <p>¿Dónde abrir el próximo centro de salud o la próxima residencia de mayores? La respuesta depende de dónde están los centros y de cuántas personas de cada edad viven a su alrededor.</p>
-      <p>Esos datos son abiertos, pero están en conjuntos separados, con formatos y unidades distintas.</p>
-      <p class="destacado">Los juntamos por sección censal y lo convertimos en algo que cualquiera puede probar: colocar un centro y ver a cuántos vecinos llega.</p>
+      <p class="grande">¿Dónde abrir la próxima residencia o el próximo centro de salud?</p>
+      <p class="grande naranja">Juntamos centros y población en 4.518 secciones censales.</p>
     </div>
     <div class="datos">
       <h3>Portal de Datos Abiertos de la Comunidad de Madrid · CC BY 4.0</h3>
       <ol>
-        <li><span class="n">1</span><a href="https://datos.comunidad.madrid/catalogo/dataset/centros_servicios_establecimientos_sanitarios"><span class="nombre">Centros, servicios y establecimientos sanitarios</span><span class="url">datos.comunidad.madrid/catalogo/dataset/centros_servicios_establecimientos_sanitarios</span></a></li>
-        <li><span class="n">2</span><a href="https://datos.comunidad.madrid/catalogo/dataset/atencion_social_registro_centros"><span class="nombre">Registro de centros de atención social (residencias y plazas)</span><span class="url">datos.comunidad.madrid/catalogo/dataset/atencion_social_registro_centros</span></a></li>
-        <li><span class="n">3</span><a href="https://datos.comunidad.madrid/catalogo/dataset/centros_educativos"><span class="nombre">Centros educativos</span><span class="url">datos.comunidad.madrid/catalogo/dataset/centros_educativos</span></a></li>
-        <li><span class="n">4</span><a href="https://datos.comunidad.madrid/catalogo/dataset/oficinas_farmacia"><span class="nombre">Oficinas de farmacia</span><span class="url">datos.comunidad.madrid/catalogo/dataset/oficinas_farmacia</span></a></li>
-        <li><span class="n">5</span><a href="https://datos.comunidad.madrid/catalogo/dataset/desfibriladores_externos_fuera_ambito_sanitario"><span class="nombre">Desfibriladores fuera del ámbito sanitario</span><span class="url">datos.comunidad.madrid/catalogo/dataset/desfibriladores_externos_fuera_ambito_sanitario</span></a></li>
-        <li><span class="n">6</span><a href="https://datos.comunidad.madrid/catalogo/dataset/proyecciones_poblacion_por_sexo"><span class="nombre">Proyecciones de población (Madrid en 2030)</span><span class="url">datos.comunidad.madrid/catalogo/dataset/proyecciones_poblacion_por_sexo</span></a></li>
-        <li><span class="n">7</span><a href="https://datos.comunidad.madrid/catalogo/dataset/municipio_comunidad_madrid"><span class="nombre">Municipios de la Comunidad de Madrid</span><span class="url">datos.comunidad.madrid/catalogo/dataset/municipio_comunidad_madrid</span></a></li>
-        <li><span class="n">8</span><a href="https://datos.comunidad.madrid/catalogo/dataset/calidad_aire_datos_dia"><span class="nombre">Calidad del aire: datos horarios del día y estaciones</span><span class="url">datos.comunidad.madrid/catalogo/dataset/calidad_aire_datos_dia · …/calidad_aire_estaciones</span></a></li>
+        <li><span class="n">1</span><a href="https://datos.comunidad.madrid/catalogo/dataset/centros_servicios_establecimientos_sanitarios"><span class="nombre">Centros sanitarios</span></a></li>
+        <li><span class="n">2</span><a href="https://datos.comunidad.madrid/catalogo/dataset/atencion_social_registro_centros"><span class="nombre">Centros de atención social (residencias y plazas)</span></a></li>
+        <li><span class="n">3</span><a href="https://datos.comunidad.madrid/catalogo/dataset/centros_educativos"><span class="nombre">Centros educativos</span></a></li>
+        <li><span class="n">4</span><a href="https://datos.comunidad.madrid/catalogo/dataset/oficinas_farmacia"><span class="nombre">Oficinas de farmacia</span></a></li>
+        <li><span class="n">5</span><a href="https://datos.comunidad.madrid/catalogo/dataset/desfibriladores_externos_fuera_ambito_sanitario"><span class="nombre">Desfibriladores</span></a></li>
+        <li><span class="n">6</span><a href="https://datos.comunidad.madrid/catalogo/dataset/proyecciones_poblacion_por_sexo"><span class="nombre">Proyecciones de población (2030)</span></a></li>
+        <li><span class="n">7</span><a href="https://datos.comunidad.madrid/catalogo/dataset/municipio_comunidad_madrid"><span class="nombre">Municipios</span></a></li>
+        <li><span class="n">8</span><a href="https://datos.comunidad.madrid/catalogo/dataset/calidad_aire_datos_dia"><span class="nombre">Calidad del aire horaria y estaciones</span></a></li>
       </ol>
-      <p class="otras">Además: <a href="https://www.ine.es/jaxiT3/Tabla.htm?t=69213">INE, censo 2025 por sección censal</a> y seccionado 2025 · <a href="https://imserso.es">IMSERSO 2024</a> (plazas de referencia) · <a href="https://www.ign.es">IGN</a> · <a href="https://open-meteo.com">Open-Meteo / Copernicus CAMS</a> · <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>.</p>
+      <p class="catalogo">Enlaces en cada nombre y en <a href="https://github.com/guillemolero10/donde-hace-falta">el README</a> · Además: INE (censo 2025), IMSERSO, IGN, Open-Meteo/CAMS, OpenStreetMap.</p>
     </div>
   </div>
   <div class="pie"><span>¿Dónde hace falta? · DATAMAD 2026</span><span>2</span></div>
 </section>
 
-<!-- 3. Resultados: utilidad, impacto, viabilidad y enlaces -->
+<!-- 3. Resultados, impacto, viabilidad y enlaces -->
 <section>
   <p class="etiqueta">Resultados</p>
   <h2 style="margin-top:20px">Dónde ayudaría más un centro nuevo</h2>
   <div class="qr3"><img src="qr-web.svg" alt="Código QR a donde-hace-falta.vercel.app">Pruébalo</div>
   <div class="cifras">
-    <div class="cifra azul">
-      <div class="num">91 %</div>
-      <p>de los vecinos tiene un centro de salud o consultorio a menos de 2 km en línea recta, como mínimo. La app señala dónde ayudaría más uno nuevo.</p>
-    </div>
     <div class="cifra">
       <div class="num">10.048 <span class="flecha">→</span> 15.526</div>
-      <p>plazas de residencia por cubrir para que toda la Comunidad llegue a la media de España: hoy y en 2030.</p>
+      <p>plazas de residencia por cubrir, hoy y en 2030.</p>
     </div>
     <div class="cifra azul">
       <div class="num">68 %</div>
-      <p>Una residencia de 94 plazas en Pinto logra el 68 % de lo que daría la mejor ubicación de su zona, en Getafe.</p>
+      <p>Residencia en Pinto frente a la mejor ubicación (Getafe).</p>
+    </div>
+    <div class="cifra azul">
+      <div class="num">91 %</div>
+      <p>de los vecinos, con centro de salud a menos de 2 km.</p>
     </div>
   </div>
   <div class="claves">
     <div>
-      <h3>Un servicio para los dos</h3>
-      <p>La Administración prueba ubicaciones antes de invertir y las compara con la del modelo. El vecino ve qué servicios tiene su municipio y cómo está el aire hoy.</p>
+      <h3>Administración</h3>
+      <p>Prueba ubicaciones antes de invertir.</p>
     </div>
     <div>
-      <h3>Impacto</h3>
-      <p>Un criterio público y medible para priorizar la inversión: vecinos que ganan acceso o plazas que se cubren, también con la población de 2030.</p>
+      <h3>Vecino</h3>
+      <p>Ve los servicios de su municipio y el aire de hoy.</p>
     </div>
     <div>
-      <h3>Viabilidad</h3>
-      <p>Web estática: coste casi nulo y se regenera con un comando cuando la Comunidad publica datos nuevos. El agente de IA es opcional: sin él responde por reglas.</p>
+      <h3>Viable</h3>
+      <p>Web estática, casi 0 €. IA: 0,01 $ por pregunta.</p>
     </div>
   </div>
   <div class="enlaces">
     <span><b>Demo:</b> <a href="https://donde-hace-falta.vercel.app">donde-hace-falta.vercel.app</a></span>
+    <span><b>▶ Vídeo:</b> <a href="https://donde-hace-falta.vercel.app/demo.mp4">donde-hace-falta.vercel.app/demo.mp4</a></span>
     <span><b>Código:</b> <a href="https://github.com/guillemolero10/donde-hace-falta">github.com/guillemolero10/donde-hace-falta</a></span>
-    <span>Código MIT · datos CC BY 4.0 · reproducible</span>
-    <span><b>▶ Vídeo de la demo (2 min):</b> <a href="https://donde-hace-falta.vercel.app/demo.mp4">donde-hace-falta.vercel.app/demo.mp4</a></span>
+    <span>MIT · datos CC BY 4.0</span>
   </div>
   <div class="pie"><span>Distancias en línea recta · Referencia: media de España (IMSERSO), 4,05 plazas por cada 100 mayores a menos de 10 km</span><span>3</span></div>
 </section>
@@ -205,7 +220,7 @@ h2 { font-family: var(--titulo); font-weight: 600; font-size: 64px; line-height:
 <!-- 4. Captura de la aplicación -->
 <section class="captura">
   <img src="../docs/capturas/donde-hace-falta-simulador.png" alt="Captura del simulador de ¿Dónde hace falta?: mapa de residencias con un centro colocado en Pinto">
-  <p class="leyenda"><b>El simulador.</b> Colocamos una residencia de 94 plazas en Pinto («Tu centro») y al momento: 63,4 plazas más cubiertas, el 68 % de lo que lograría el modelo en Getafe. En <span class="azul">azul</span>, zonas por encima de la media de España; en <span class="naranja">naranja</span>, donde un centro nuevo ayudaría más.</p>
+  <p class="leyenda">Colocas una residencia en Pinto y al momento: <b>63,4 plazas más cubiertas</b>, el <span class="azul">68 %</span> de la mejor ubicación.</p>
   <div class="pie"><span></span><span>4</span></div>
 </section>
 

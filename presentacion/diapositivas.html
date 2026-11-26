@@ -123,6 +123,19 @@ h2 { font-family: var(--titulo); font-weight: 600; font-size: 64px; line-height:
 .claves h3 { font-size: 38px; }
 .claves p { font-size: 28px; }
 .captura .leyenda { font-size: 30px; text-align: center; }
+
+/* ---------- 4. Captura + QR grande al agente (26-nov, final) ---------- */
+.captura-qr { padding: 72px 128px 140px; display: block; }
+.captura-qr .fila4 { display: flex; gap: 72px; align-items: center; height: 100%; }
+.captura-qr figure { margin: 0; width: 1040px; flex: none; }
+.captura-qr figure img { width: 1040px; height: 647px; }
+.captura-qr figure .leyenda { width: 1040px; font-size: 26px; text-align: center; margin-top: 22px; }
+.captura-qr .qr4 { flex: 1; text-align: center; }
+.captura-qr .qr4 h2 { font-family: var(--titulo); font-weight: 600; font-size: 44px; line-height: 1.15; margin: 0 0 24px; }
+.captura-qr .qr4 img { display: block; width: 440px; height: 440px; margin: 0 auto; border-radius: 8px; border: 1px solid var(--borde); box-shadow: none; }
+.captura-qr .qr4 .url { font-size: 24px; font-weight: 600; color: var(--acento); margin: 14px 0 18px; }
+.captura-qr .qr4 ul { list-style: none; padding: 0; margin: 0; font-size: 28px; line-height: 1.5; color: var(--tinta-2); }
+.portada .marco { box-shadow: none; }
 </style>
 </head>
 <body>
@@ -218,9 +231,22 @@ h2 { font-family: var(--titulo); font-weight: 600; font-size: 64px; line-height:
 </section>
 
 <!-- 4. Captura de la aplicación -->
-<section class="captura">
-  <img src="../docs/capturas/donde-hace-falta-simulador.png" alt="Captura del simulador de ¿Dónde hace falta?: mapa de residencias con un centro colocado en Pinto">
-  <p class="leyenda">Colocas una residencia en Pinto y al momento: <b>63,4 plazas más cubiertas</b>, el <span class="azul">68 %</span> de la mejor ubicación.</p>
+<section class="captura captura-qr">
+  <div class="fila4">
+    <figure>
+      <img src="../docs/capturas/donde-hace-falta-simulador.png" alt="Captura del simulador de ¿Dónde hace falta?: mapa de residencias con un centro colocado en Pinto">
+      <p class="leyenda">Colocas una residencia en Pinto y al momento: <b>63,4 plazas más cubiertas</b>, el <span class="azul">68 %</span> de la mejor ubicación.</p>
+    </figure>
+    <div class="qr4">
+      <h2>Pregúntale al agente</h2>
+      <img src="qr-agente.svg" alt="Código QR a donde-hace-falta.vercel.app/?agente=1">
+      <p class="url">donde-hace-falta.vercel.app</p>
+      <ul>
+        <li>«¿Qué le falta a Getafe?»</li>
+        <li>«¿Dónde pondrías 3 residencias?»</li>
+      </ul>
+    </div>
+  </div>
   <div class="pie"><span></span><span>4</span></div>
 </section>
 
